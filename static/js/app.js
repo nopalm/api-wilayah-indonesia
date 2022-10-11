@@ -51,6 +51,9 @@ const el = new Vue({
     }
   },
   computed: {
+   urlApiAll() {
+      return `${this.baseApiUrl}/all.json`
+    },
     urlApiProvinces() {
       return `${this.baseApiUrl}/provinces.json`
     },
@@ -62,6 +65,13 @@ const el = new Vue({
     },
     urlApiVillages() {
       return `${this.baseApiUrl}/villages/${this.districtId}.json`
+    },
+    fetchAllCode() {
+      return [
+        `fetch(\`<a href="${this.urlApiAll}" target="_blank">${this.urlApiAll}</a>\`)`,
+        '.then(response => response.json())',
+        '.then(provinces => console.log(provinces));'
+      ].join('\n')
     },
     fetchProvincesCode() {
       return [
